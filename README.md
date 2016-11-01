@@ -6,7 +6,7 @@ vuejs and vue-resource required;
 ```
 or
 ```javascript
-require('dist/loadingbar.js)(Vue);
+require('dist/loadingbar.js')(Vue);
 ```
 with webpack
 ```javascript

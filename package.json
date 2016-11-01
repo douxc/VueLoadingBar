@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "vue loading bar",
   "main": "src/loadingbar.js",
+  "repository": "https://github.com/douxc/vueLoadingBar.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
