@@ -1,6 +1,6 @@
 {
   "name": "vueLoadingBar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vue loading bar",
   "main": "src/loadingbar.js",
   "repository": "https://github.com/douxc/vueLoadingBar.git",

@@ -11,7 +11,7 @@
     var requestCount = 0;// 请求数量
     var delayTimeoutId = 0;
     var loadingEle = document.createElement('div');
-    var loadingBarDelay = 0;
+    var loadingBarDelay = 300;
 
     function LoadingBar(Vue) {
         Object.defineProperties(Vue.prototype, {
