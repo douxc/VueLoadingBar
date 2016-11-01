@@ -12,25 +12,35 @@
     display: none;
     overflow: hidden;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .loading-content {
     position: absolute;
+    width: 4rem;
+    height: 4rem;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 2px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.loading-icon {
+    display: inline-block;
     width: 2rem;
     height: 2rem;
     border-radius: 2rem;
     border-left: 2px solid #1e90ff;
     border-top: 2px solid #1e90ff;
-    margin: auto;
 }
 
 .show {
     display: block;
 }
 
-.show .loading-content {
-    animation: rotate 3s linear infinite;
+.show .loading-icon {
+    animation: rotate 500ms linear infinite;
 }
 
 @keyframes rotate {

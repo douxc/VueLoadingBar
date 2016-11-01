@@ -26,7 +26,8 @@
         });
         if (!document.getElementById('LoadingBar')) {
             loadingEle.id = 'LoadingBar';
-            loadingEle.innerHTML = '<div class="loading-content"></div>';
+            loadingEle.innerHTML = '<div class="loading-content">' +
+                '<icon class="loading-icon"></icon></div>';
             document.body.appendChild(loadingEle);
         }
         Vue.http.interceptors.push((request, next) => {
