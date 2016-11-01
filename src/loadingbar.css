@@ -1,0 +1,42 @@
+#LoadingBar, .loading-content {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#LoadingBar {
+    position: fixed;
+    pointer-events: none;
+    display: none;
+    overflow: hidden;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.loading-content {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    border-left: 2px solid #1e90ff;
+    border-top: 2px solid #1e90ff;
+    margin: auto;
+}
+
+.show {
+    display: block;
+}
+
+.show .loading-content {
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
