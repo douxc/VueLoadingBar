@@ -8,12 +8,22 @@
             (global.VueLoadingBar = factory());
 })(this, (function() {
     'use strict';
-    var delay = 0;// 请求多久没有返回显示loading
     var requestCount = 0;// 请求数量
     var delayTimeoutId = 0;
     var loadingEle = document.createElement('div');
+    var loadingBarDelay = 0;
 
     function LoadingBar(Vue) {
+        Object.defineProperties(Vue.prototype, {
+            loadingBarDelay: {
+                get(){
+                    return loadingBarDelay;
+                },
+                set(_loadingBarDelay){
+                    loadingBarDelay = Number(_loadingBarDelay);
+                }
+            }
+        });
         if (!document.getElementById('LoadingBar')) {
             loadingEle.id = 'LoadingBar';
             loadingEle.innerHTML = '<div class="loading-content"></div>';
@@ -23,7 +33,7 @@
             if (requestCount === 0) {
                 delayTimeoutId = setTimeout(() => {
                     loadingEle.classList.add('show');
-                }, delay);
+                }, loadingBarDelay);
             }
             requestCount++;
             next(() => {
@@ -36,7 +46,7 @@
         });
     }
 
-    if (window.Vue && window.VueResource) {
+    if (typeof window !== 'undefined' && window.Vue) {
         window.Vue.use(LoadingBar);
     }
     return LoadingBar;

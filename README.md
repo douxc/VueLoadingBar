@@ -2,19 +2,26 @@
 vuejs and vue-resource required;
 
 ```javascript
-<script src='dist/loadingbar.js'></script>
+<link href="src/loadingbar.min.css" rel="stylesheet" type="text/css" />
+<script src='src/loadingbar.js'></script>
 ```
 or
 ```javascript
-require('dist/loadingbar.js')(Vue);
+require('src/loadingbar.js')(Vue);
 ```
 with webpack
 ```javascript
 ...
-require('vueLoadingBar/dist/loadingbar.css');
+require('vueLoadingBar/src/loadingbar.css');
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import vueLoadingBar from 'vueLoadingBar';
 Vue.use(VueResource);
 Vue.use(vueLoadingBar);
+
+```
+## config
+```javascript
+// 设置请求超过多少毫秒才显示
+new Vue({...}).loadingBarDelay = 300;
 ```

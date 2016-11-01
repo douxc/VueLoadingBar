@@ -6,5 +6,5 @@ var autoprefixer = require('gulp-autoprefixer');
 gulp.task('css', function() {
     gulp.src('./src/*.css')
         .pipe(autoprefixer({ browsers: ['Android >= 4.2', 'iOS >= 9', '> 5%'] }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('./src/loadingbar.min.css'));
 });
