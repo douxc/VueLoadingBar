@@ -1,3 +1,5 @@
+自动给vue-resource的ajax请求添加loadingbar。默认请求时间超过300毫秒才显示，可以手动配置延迟的时间
+
 ## add loading bar for Vue-resource
 vuejs and vue-resource required;
 
