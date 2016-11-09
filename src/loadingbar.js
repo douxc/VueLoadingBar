@@ -16,10 +16,10 @@
     function LoadingBar(Vue) {
         Object.defineProperties(Vue.prototype, {
             loadingBarDelay: {
-                get(){
+                get: function() {
                     return loadingBarDelay;
                 },
-                set(_loadingBarDelay){
+                set: function(_loadingBarDelay) {
                     loadingBarDelay = Number(_loadingBarDelay);
                 }
             }
