@@ -30,14 +30,14 @@
                 '<icon class="loading-icon"></icon></div>';
             document.body.appendChild(loadingEle);
         }
-        Vue.http.interceptors.push((request, next) => {
+        Vue.http.interceptors.push(function(request, next) {
             if (requestCount === 0) {
-                delayTimeoutId = setTimeout(() => {
+                delayTimeoutId = setTimeout(function() {
                     loadingEle.classList.add('show');
                 }, loadingBarDelay);
             }
             requestCount++;
-            next(() => {
+            next(function() {
                 if (requestCount <= 1) {
                     window.clearTimeout(delayTimeoutId);
                     loadingEle.classList.remove('show');
