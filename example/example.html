@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueLoadingBar</title>
+    <link rel="stylesheet" href="../dist/loadingbar.css"/>
+</head>
+<body>
+<button onclick="_click()">click</button>
+<script src="http://cdn.bootcss.com/vue/2.1.8/vue.min.js"></script>
+<script src="http://cdn.bootcss.com/vue-resource/1.0.3/vue-resource.min.js"></script>
+<script src="../dist/loadingbar.js"></script>
+<script>
+    function _click() {
+        Vue.http.get('https://www.github.com').then(function() {}, function() {});
+    }
+</script>
+</body>
+</html>

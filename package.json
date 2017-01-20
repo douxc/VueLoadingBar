@@ -1,9 +1,9 @@
 {
-  "name": "vueLoadingBar",
+  "name": "VueLoadingBar",
   "version": "1.0.9",
   "description": "vue loading bar",
-  "main": "src/loadingbar.js",
-  "repository": "https://github.com/douxc/vueLoadingBar.git",
+  "main": "dist/loadingbar.js",
+  "repository": "https://github.com/douxc/VueLoadingBar.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,11 +12,12 @@
     "loadingbar"
   ],
   "author": "douxc",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^2.0.13",
-    "gulp-rename": "^1.2.2"
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0"
   }
 }
