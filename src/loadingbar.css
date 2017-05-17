@@ -9,17 +9,17 @@
 
 #LoadingBar {
     position: fixed;
-    pointer-events: none;
     display: none;
     overflow: hidden;
     padding: 1rem;
     background: rgba(0, 0, 0, 0.1);
+    user-select: none;
 }
 
 .loading-content {
     position: absolute;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     margin: auto;
     padding: 1rem;
     border-radius: 2px;
@@ -29,11 +29,11 @@
 
 .loading-icon {
     display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 2rem;
-    border-left: 2px solid #1e90ff;
-    border-top: 2px solid #1e90ff;
+    box-sizing: border-box;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 2px dashed #1e90ff;
 }
 
 #LoadingBar.show {
@@ -41,13 +41,10 @@
 }
 
 .show .loading-icon {
-    animation: rotate 500ms linear infinite;
+    animation: rotate 1.5s linear infinite;
 }
 
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
     to {
         transform: rotate(360deg);
     }
