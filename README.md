@@ -1,14 +1,24 @@
 自动给vue-resource的ajax请求添加loadingbar。默认请求时间超过300毫秒才显示，可以手动配置延迟的时间
 
-## add loading bar for Vue-resource
-vuejs and vue-resource required;
+## add loading bar for Vue-resource or axios
+vuejs and vue-resource ([axios](https://github.com/mzabriskie/axios)) required;
 
-## start
+## 截图
+
+![LoadingBar截图](./capture.gif)
+
+## 安装
 > npm install vueLoadingBar --save
 
-```javascript
-<link href="src/loadingbar.min.css" rel="stylesheet" type="text/css" />
-<script src='src/loadingbar.js'></script>
+``` html
+<head>
+    ...
+    <link href="src/loadingbar.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    ...
+    <script src='src/loadingbar.js'></script>
+</body>
 ```
 
 or
@@ -28,6 +38,12 @@ import vueLoadingBar from 'vueLoadingBar';
 Vue.use(VueResource);
 Vue.use(vueLoadingBar);
 ```
+
+## 注意
+
+如果使用其他支持interceptors的第三方库，需要将第三方库挂载到Vue.http；
+
+使用axios时可以不做任何处理或者绑定到Vue.axios、Vue.$axios
 
 ## config
 

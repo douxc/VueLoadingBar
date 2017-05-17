@@ -10,10 +10,18 @@
 <button onclick="_click()">click</button>
 <script src="http://cdn.bootcss.com/vue/2.1.8/vue.min.js"></script>
 <script src="http://cdn.bootcss.com/vue-resource/1.0.3/vue-resource.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/axios/0.16.1/axios.min.js"></script>-->
+<script src="../node_modules/mockjs/dist/mock.js"></script>
 <script src="../dist/loadingbar.js"></script>
 <script>
+    Mock.mock('./test', {
+        "string|1-10": "★"
+    });
     function _click() {
-        Vue.http.get('https://www.github.com').then(function() {}, function() {});
+        var _http = Vue.http || axios;
+        _http.get('./test').then(function (data) {
+            console.log(data);
+        });
     }
 </script>
 </body>
