@@ -31,7 +31,7 @@ with webpack
 
 ```javascript
 ...
-require('vueLoadingBar/src/loadingbar.css');
+import 'vueLoadingBar/src/loadingbar.css';
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import vueLoadingBar from 'vueLoadingBar';
