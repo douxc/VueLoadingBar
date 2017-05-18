@@ -16,7 +16,7 @@
 <script>
     // 设置数据返回时间
     Mock.setup({
-        timeout: '600-3000'
+        timeout: '200-3000'
     });
     Mock.mock('./test', {
         "string|1-10": "★"
@@ -26,7 +26,7 @@
 //        _http.get('./test', {$hideLoadingBar: true}).then(function (data) {
 //            console.log(data);
 //        });
-        _http.post('./test', {}, {$hideLoadingBar: true}).then(function (data) {
+        _http.post('./test', {}, {$hideLoadingBar: false}).then(function (data) {
             console.log(data);
         });
     }

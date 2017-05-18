@@ -24,6 +24,7 @@
             loadingEle.classList.remove('show');
         }
         requestCount--;
+        requestCount = requestCount < 0 ? 0 : requestCount;
     }
 
     /**
@@ -76,8 +77,10 @@
         if (Vue.http) {
             // vue-resource
             Vue.http.interceptors.push(function (request, next) {
-                !request.$hideLoadingBar && _showLoading();
-                next(_hideLoading);
+                if (!request.$hideLoadingBar) {
+                    _showLoading();
+                    next(_hideLoading);
+                }
             });
         } else if (Vue.axios || Vue.$axios || axios) {
             // axios 支持不绑定到Vue属性上或者绑定为Vue.axios、Vue.$axios
@@ -86,13 +89,15 @@
                 !request.$hideLoadingBar && _showLoading();
                 return request;
             }, function (err) {
+                // bug?：如果页面同时有启用loading和禁用loading的时候，禁用loading的请求出错会影响到启用loading的请求；但是不需要处理，因为同一个页面同时出现这种情况时本身就是错误
                 _hideLoading();
                 return Promise.reject(err);
             });
             _axios.interceptors.response.use(function (response) {
-                _hideLoading();
+                !response.config.$hideLoadingBar && _hideLoading();
                 return response;
             }, function (err) {
+                // bug?：如果页面同时有启用loading和禁用loading的时候，禁用loading的请求出错会影响到启用loading的请求；但是不需要处理，因为同一个页面同时出现这种情况时本身就是错误
                 _hideLoading();
                 return Promise.reject(err);
             });
