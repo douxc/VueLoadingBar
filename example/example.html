@@ -23,7 +23,10 @@
     });
     function _click() {
         var _http = Vue.http || axios;
-        _http.get('./test').then(function (data) {
+//        _http.get('./test', {$hideLoadingBar: true}).then(function (data) {
+//            console.log(data);
+//        });
+        _http.post('./test', {}, {$hideLoadingBar: true}).then(function (data) {
             console.log(data);
         });
     }
