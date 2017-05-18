@@ -47,7 +47,26 @@ Vue.use(vueLoadingBar);
 
 ## config
 
+###### loadingBarDelay   ```default 300ms```
+
 ```javascript
 // 设置请求超过多少毫秒才显示，默认300毫秒
 new Vue({...}).loadingBarDelay = 100;
+```
+
+###### enableLoadingBar   ```default true```
+
+```javascript
+// 设置全局禁用loadingbar
+new Vue().enableLoadingBar = false;
+```
+
+###### $hideLoadingBar   ```default false```
+
+当前请求禁用loadingbar(不影响其他请求)。只需要在请求的config部分(如[axios request](https://github.com/mzabriskie/axios#request-method-aliases))设置$hideLoadingBar为true即可
+
+```javascript
+// 设置此次请求不显示loadingbar
+http.get(url, {$hideLoadingBar: true}).then(...); // get
+http.post(url, data, {$hideLoadingBar: true}).then(...); // post
 ```

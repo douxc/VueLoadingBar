@@ -12,6 +12,7 @@
     var delayTimeoutId = 0;
     var loadingEle = document.createElement('div');
     var loadingBarDelay = 300;
+    var enable = true;
 
     /**
      * 隐藏loading框
@@ -27,18 +28,16 @@
 
     /**
      * 延迟显示loading框
-     * @param request
-     * @param next
      * @private
      */
-    function _showLoading(request, next) {
+    function _showLoading() {
+        if (!enable)return false;
         if (requestCount === 0) {
             delayTimeoutId = setTimeout(function () {
                 loadingEle.classList.add('show');
             }, loadingBarDelay); // 延迟显示，当请求响应时间过快时不需要显示loading
         }
         requestCount++;
-        next && next(_hideLoading); // 如果是vue-resource则有next
     }
 
     /**
@@ -55,6 +54,14 @@
                 set: function (_loadingBarDelay) {
                     loadingBarDelay = Number(_loadingBarDelay);
                 }
+            },
+            enableLoadingBar: {
+                get: function () {
+                    return enable;
+                },
+                set: function (enableLoadingBar) {
+                    enable = Boolean(enableLoadingBar);
+                }
             }
         });
         if (!document.getElementById('LoadingBar')) {
@@ -67,12 +74,16 @@
          * 判断使用的是vue-resource还是axios
          */
         if (Vue.http) {
-            Vue.http.interceptors.push(_showLoading);
+            // vue-resource
+            Vue.http.interceptors.push(function (request, next) {
+                !request.$hideLoadingBar && _showLoading();
+                next(_hideLoading);
+            });
         } else if (Vue.axios || Vue.$axios || axios) {
             // axios 支持不绑定到Vue属性上或者绑定为Vue.axios、Vue.$axios
             var _axios = Vue.axios || Vue.$axios || axios;
             _axios.interceptors.request.use(function (request) {
-                _showLoading();
+                !request.$hideLoadingBar && _showLoading();
                 return request;
             }, function (err) {
                 _hideLoading();
