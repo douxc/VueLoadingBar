@@ -94,6 +94,8 @@
                 return Promise.reject(err);
             });
             _axios.interceptors.response.use(function (response) {
+                //Tip: 如果其他的interceptors处理了返回数据，此处有可能会获取不到$hideLoadingBar，做一下处理。如果获取不到则默认隐藏loading
+                response.config = response.config || {};
                 !response.config.$hideLoadingBar && _hideLoading();
                 return response;
             }, function (err) {
